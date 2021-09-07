@@ -1,32 +1,53 @@
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 public class Usuario {
 
-    private String nombre;
-    private String pass;
+    Conection con = new Conection();
+    private ResultSet rs;
+    private PreparedStatement ps;
 
     public Usuario() {
 
+        this.rs = null;
+        this.ps = null;
     }
 
-    public Usuario(String nombre, String pass) {
-        this.nombre = nombre;
-        this.pass = pass;
+    public boolean validador() {
+        con.conexion();
+        return true;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public boolean Login(String name, String pass) {
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+        if (!validador()) {
+            JOptionPane.showMessageDialog(null, "Connection fail");
+        } else {
 
-    public String getPass() {
-        return pass;
-    }
+            try {
+                ps = con.getConexion().prepareStatement("SELECT * FROM user WHERE Name = ?");
+                ps.setString(1, name);
 
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
+                rs = ps.executeQuery();
 
+                if (rs.next()) {
+                    if (rs.getString("name").equals(name) && rs.getString("password").equals(pass)) {
+                        JOptionPane.showMessageDialog(null, "Inicio Valido");
+                        return true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
+                        return false;
+                    }
+                }
+
+            } catch (SQLException ex) {
+                return false;
+            }
+
+        }
+        return false;
+    }
 }
