@@ -35,14 +35,13 @@ public class Conection {
     }
 
 
-    public void Registro(String username, String pass) {
+    public void Registro(String username, String pass, int age, String name, String id, String gen, String semester) {
         try {
             s = conexion.createStatement();
-            int z = s.executeUpdate("INSERT INTO \"Student\"(\"Username\", \"Pass\")"
-                    + "\nVALUES ('" + username + "', '" + pass + "')");
+            int z = s.executeUpdate("INSERT INTO \"Student\"(\"name\", \"age\", \"id\", \"gen\", \"semester\", \"username\", \"pass\")"
+                    + "\nVALUES ('" + name + "', '" + age + "', '" + id + "', '" + gen + "', '" + semester + "', '" + username + "', '" + pass + "')");
             if (z == 1) {
             } else {
-
 
                 JOptionPane.showMessageDialog(null, "Error");
             }
@@ -52,7 +51,7 @@ public class Conection {
         }
     }
 
-    public void RegistroDoc(String username, String pass) {
+    public void RegistroDoc(String username, String pass, String name, byte code, String email, byte phumber, String level, String schedule) {
 
         try {
             s = conexion.createStatement();
@@ -61,10 +60,6 @@ public class Conection {
                     + "\nVALUES ('" + username + "', '" + pass + "')");
             if (z == 1) {
             } else {
-
-        
-
-
                 JOptionPane.showMessageDialog(null, "Error");
             }
             JOptionPane.showMessageDialog(null, "Docente registrado exitosamente");
