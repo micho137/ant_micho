@@ -17,7 +17,7 @@ public class Usuario {
     }
 
     public boolean validador() {
-        
+
         return con.conexion();
     }
 
