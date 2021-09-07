@@ -12,6 +12,7 @@ public class Login1 extends javax.swing.JFrame {
 
     Conection con = new Conection();
     Conection user;
+
     public Login1() {
         initComponents();
         con.conexion();
@@ -162,7 +163,11 @@ public class Login1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+        String username = jTextField1.getText();
+        char[] ArrayC = jPasswordField1.getPassword();
+        String pass = new String(ArrayC);
+        Usuario usu =  new Usuario();
+        usu.Login(username, pass);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
