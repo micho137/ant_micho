@@ -1,7 +1,6 @@
 
 import java.sql.*;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Conection {
@@ -10,44 +9,35 @@ public class Conection {
     private ResultSet rs = null;
     private Statement s = null;
 
-    public void connectDatabase() {
-
-    }
-
     public Connection getConexion() {
         return conexion;
     }
 
-    public void conexion() {
-        if (conexion != null) {
-
+    public boolean conexion() {
+        /* if (conexion != null) {
             return;
-        }
+        }*/
         String host = "localhost";
         String DB = "Register";
         String user = "postgres";
         String pass = "Micho137";
-
         try {
             conexion = DriverManager.getConnection("jdbc:postgresql://" + host + ":5432/" + DB, user, pass);
-
+            return true;
         } catch (Exception e) {
-
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Ocurrio el problema: \n" + e);
+            return false;
         }
     }
 
     public void Registro(String username, String pass) {
-
         try {
             s = conexion.createStatement();
-            int z = s.executeUpdate("INSERT INTO \"NewStudent\"(\"Username\", \"Pass\")"
+            int z = s.executeUpdate("INSERT INTO \"Student\"(\"Username\", \"Pass\")"
                     + "\nVALUES ('" + username + "', '" + pass + "')");
             if (z == 1) {
-
             } else {
-
                 JOptionPane.showMessageDialog(null, "Error");
             }
             JOptionPane.showMessageDialog(null, "Estudiante registrado exitosamente");
@@ -60,12 +50,10 @@ public class Conection {
 
         try {
             s = conexion.createStatement();
-            int z = s.executeUpdate("INSERT INTO \"NewDoc\"(\"Username\", \"Password\")"
+            int z = s.executeUpdate("INSERT INTO \"Teacher\"(\"Username\", \"Password\")"
                     + "\nVALUES ('" + username + "', '" + pass + "')");
             if (z == 1) {
-
             } else {
-
                 JOptionPane.showMessageDialog(null, "Error");
             }
             JOptionPane.showMessageDialog(null, "Docente registrado exitosamente");

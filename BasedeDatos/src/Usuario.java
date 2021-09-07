@@ -17,8 +17,8 @@ public class Usuario {
     }
 
     public boolean validador() {
-        con.conexion();
-        return true;
+        
+        return con.conexion();
     }
 
     public boolean Login(String name, String pass) {
@@ -28,13 +28,11 @@ public class Usuario {
         } else {
 
             try {
-                ps = con.getConexion().prepareStatement("SELECT * FROM user WHERE Name = ?");
+                ps = con.getConexion().prepareStatement("SELECT * FROM \"Student\" WHERE Name = ?");
                 ps.setString(1, name);
-
                 rs = ps.executeQuery();
-
                 if (rs.next()) {
-                    if (rs.getString("name").equals(name) && rs.getString("password").equals(pass)) {
+                    if (rs.getString("Username").equals(name) && rs.getString("Pass").equals(pass)) {
                         JOptionPane.showMessageDialog(null, "Inicio Valido");
                         return true;
                     } else {
@@ -42,11 +40,9 @@ public class Usuario {
                         return false;
                     }
                 }
-
             } catch (SQLException ex) {
                 return false;
             }
-
         }
         return false;
     }
