@@ -28,18 +28,19 @@ public class Usuario {
         } else {
 
             try {
-                ps = con.getConexion().prepareStatement("SELECT * FROM \"Student\" WHERE Name = ?");
-                ps.setString(1, name);
+                ps = con.getConexion().prepareStatement("SELECT * FROM \"Student\" WHERE Username ='" + name + "'AND Pass = '" + pass + "'");
+                
                 rs = ps.executeQuery();
+                System.out.println("hola");
                 if (rs.next()) {
-                    if (rs.getString("Username").equals(name) && rs.getString("Pass").equals(pass)) {
+                        System.out.println("Hola");
                         JOptionPane.showMessageDialog(null, "Inicio Valido");
                         return true;
-                    } else {
+                     
+                }else {
                         JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
                         return false;
                     }
-                }
             } catch (SQLException ex) {
                 return false;
             }
