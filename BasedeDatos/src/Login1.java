@@ -169,11 +169,6 @@ public class Login1 extends javax.swing.JFrame {
         Usuario usu =  new Usuario();
         usu.Login(username, pass);
         
-       if(usu.Login(username, pass)){
-           Login sc = new Login();
-           sc.setVisible(true);
-           this.dispose();
-       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

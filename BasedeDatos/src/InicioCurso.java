@@ -45,6 +45,8 @@ public class InicioCurso extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setResizable(false);
+
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -221,11 +223,14 @@ public class InicioCurso extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Login sc = new Login();
-        sc.setVisible(true);
+        Ventana1 v1 = new Ventana1();
+        v1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
