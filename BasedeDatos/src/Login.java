@@ -191,13 +191,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        InicioDocente idc = new InicioDocente();
+        DosDocente idc = new DosDocente();
         idc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        InicioEstudiante sc = new InicioEstudiante();
+        DosEstudiante sc = new DosEstudiante();
         sc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed

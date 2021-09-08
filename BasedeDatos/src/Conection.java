@@ -51,13 +51,13 @@ public class Conection {
         }
     }
 
-    public void RegistroDoc(String username, String pass, String name, byte code, String email, byte phumber, String level, String schedule) {
+    public void RegistroDoc(String username, String pass, String name, int code, String email, String pnumber, String level, String schedule) {
 
         try {
             s = conexion.createStatement();
 
             int z = s.executeUpdate("INSERT INTO \"Teacher\"(\"Username\", \"Password\")"
-                    + "\nVALUES ('" + username + "', '" + pass + "')");
+                    + "\nVALUES ('" + name + "', '" + code + "', '" + email + "', '" + pnumber + "', '" + level + "', '" + schedule + "', '" + username + "', '" + pass + "')");
             if (z == 1) {
             } else {
                 JOptionPane.showMessageDialog(null, "Error");
