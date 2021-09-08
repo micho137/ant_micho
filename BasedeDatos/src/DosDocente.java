@@ -26,6 +26,20 @@ public class DosDocente extends javax.swing.JFrame {
         jTextField7.setText("");
         jPasswordField1.setText("");
     }
+    public void letter(java.awt.event.KeyEvent evt){
+    
+        char letra = evt.getKeyChar();
+        if (!Character.isLetter(letra)) {
+            evt.consume();
+        }
+    }
+    public void num(java.awt.event.KeyEvent evt){
+    
+        char letra = evt.getKeyChar();
+        if (!Character.isDigit(letra)) {
+            evt.consume();
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -106,6 +120,11 @@ public class DosDocente extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jTextField2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -115,6 +134,11 @@ public class DosDocente extends javax.swing.JFrame {
 
         jTextField4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jTextField5.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -275,9 +299,17 @@ public class DosDocente extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         char[]ArrayC = jPasswordField1.getPassword();
         String pass = new String(ArrayC);
-        con.RegistroDoc(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),Integer.parseInt(jTextField4.getText()),jTextField5.getText(),jTextField6.getText(),jTextField7.getText(),pass);
+        con.RegistroDoc(jTextField1.getText(),Integer.parseInt(jTextField2.getText()),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),jTextField6.getText(),jTextField7.getText(),pass);
         Limpiar();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        letter(evt);
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        num(evt);
+    }//GEN-LAST:event_jTextField4KeyTyped
 
     /**
      * @param args the command line arguments

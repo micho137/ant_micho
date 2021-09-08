@@ -35,10 +35,10 @@ public class Conection {
     }
 
 
-    public void Registro(String username, String pass, int age, String name, String id, String gen, String semester) {
+    public void Registro(String name, int age, String id, String gen, String semester, String username, String pass) {
         try {
             s = conexion.createStatement();
-            int z = s.executeUpdate("INSERT INTO \"Student\"(\"name\", \"age\", \"id\", \"gen\", \"semester\", \"username\", \"pass\")"
+            int z = s.executeUpdate("INSERT INTO \"Student\"(\"name\", \"age\", \"id\", \"gen\", \"semester\", \"Username\", \"Pass\")"
                     + "\nVALUES ('" + name + "', '" + age + "', '" + id + "', '" + gen + "', '" + semester + "', '" + username + "', '" + pass + "')");
             if (z == 1) {
             } else {
@@ -51,13 +51,13 @@ public class Conection {
         }
     }
 
-    public void RegistroDoc(String username, String pass, String name, int code, String email, String pnumber, String level, String schedule) {
+    public void RegistroDoc(String name,int code, String email, String pnumber, String level, String schedule, String username, String pass) {
 
         try {
             s = conexion.createStatement();
 
-            int z = s.executeUpdate("INSERT INTO \"Teacher\"(\"Username\", \"Password\")"
-                    + "\nVALUES ('" + name + "', '" + code + "', '" + email + "', '" + pnumber + "', '" + level + "', '" + schedule + "', '" + username + "', '" + pass + "')");
+            int z = s.executeUpdate("INSERT INTO \"Teacher\"(\"name\", \"email\", \"level\", \"schedule\", \"Password\", \"Username\", \"code\", \"pnumber\")"
+                    + "\nVALUES ('" + name + "', '" + code + "', '" + email + "', '" + level + "', '" + schedule + "', '" + username + "', '" + pass + "', '" + pnumber + "')");
             if (z == 1) {
             } else {
                 JOptionPane.showMessageDialog(null, "Error");
