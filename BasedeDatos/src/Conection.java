@@ -83,25 +83,6 @@ public class Conection {
         }
     }
 
-    public DefaultTableModel mostrarEstudiantes(DefaultTableModel tab) {
-                
-        try {
-            s = conexion.createStatement();
-            rs = s.executeQuery("SELECT * FROM Student");
-            int cont = 0;
-            while (rs.next()) {
-                tab.setRowCount(cont + 1);
-                tab.setValueAt(rs.getString("name"), cont, 0);
-                tab.setValueAt(rs.getString("age"), cont, 1);
-                tab.setValueAt(rs.getString("id"), cont, 2);
-                tab.setValueAt(rs.getString("gen"), cont, 3);
-                tab.setValueAt(rs.getString("semester"), cont, 4);
-                cont++;
-            }
-        } catch (Exception e) {
 
-        }
-        return tab;
-    }
 
 }
