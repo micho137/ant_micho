@@ -3,6 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Usuario {
 
@@ -21,6 +22,7 @@ public class Usuario {
         return con.conexion();
 
     }
+
     public String[] namesStudent(String Username) {
         String vec[] = new String[2];
 
@@ -87,5 +89,81 @@ public class Usuario {
             }
         }
         return false;
+    }
+
+    public DefaultTableModel mostrarEstudiantes(DefaultTableModel tab) {
+        if (!validador()) {
+            JOptionPane.showMessageDialog(null, "Connection fail");
+        } else {
+            try {
+                ps = con.getConexion().prepareStatement("SELECT * FROM Student");
+                ps = con.getConexion().prepareStatement("SELECT * FROM \"Student\"");
+                rs = ps.executeQuery();
+                int cont = 0;
+                while (rs.next()) {
+                    tab.setRowCount(cont + 1);
+                    tab.setValueAt(rs.getString("name"), cont, 0);
+                    tab.setValueAt(rs.getString("age"), cont, 1);
+                    tab.setValueAt(rs.getInt("age"), cont, 1);
+                    tab.setValueAt(rs.getString("id"), cont, 2);
+                    tab.setValueAt(rs.getString("gen"), cont, 3);
+                    tab.setValueAt(rs.getString("semester"), cont, 4);
+                }
+            } catch (Exception e) {
+
+            }
+        }
+        return tab;
+    }
+
+    public DefaultTableModel mostrarCursos(DefaultTableModel tab) {
+        if (!validador()) {
+            JOptionPane.showMessageDialog(null, "Connection fail");
+        } else {
+            try {
+
+                ps = con.getConexion().prepareStatement("SELECT * FROM \"Course\"");
+                rs = ps.executeQuery();
+                int cont = 0;
+                while (rs.next()) {
+                    tab.setRowCount(cont + 1);
+                    tab.setValueAt(rs.getString("name"), cont, 0);
+                    tab.setValueAt(rs.getInt("code"), cont, 1);
+                    tab.setValueAt(rs.getString("duration"), cont, 2);
+                    tab.setValueAt(rs.getString("modality"), cont, 3);
+                    tab.setValueAt(rs.getInt("credits"), cont, 4);
+                    cont++;
+                }
+            } catch (Exception e) {
+
+            }
+        }
+        return tab;
+    }
+
+    public DefaultTableModel mostrarDocentes(DefaultTableModel tab) {
+        if (!validador()) {
+            JOptionPane.showMessageDialog(null, "Connection fail");
+        } else {
+            try {
+
+                ps = con.getConexion().prepareStatement("SELECT * FROM \"Teacher\"");
+                rs = ps.executeQuery();
+                int cont = 0;
+                while (rs.next()) {
+                    tab.setRowCount(cont + 1);
+                    tab.setValueAt(rs.getString("name"), cont, 0);
+                    tab.setValueAt(rs.getString("email"), cont, 1);
+                    tab.setValueAt(rs.getString("level"), cont, 2);
+                    tab.setValueAt(rs.getString("shedule"), cont, 3);
+                    tab.setValueAt(rs.getInt("code"), cont, 4);
+                    tab.setValueAt(rs.getInt("pnumber"), cont, 5);
+                    cont++;
+                }
+            } catch (Exception e) {
+
+            }
+        }
+        return tab;
     }
 }
