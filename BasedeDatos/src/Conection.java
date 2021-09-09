@@ -50,14 +50,14 @@ public class Conection {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
-    public void RegistroDoc(String name,int code, String email, String pnumber, String level, String schedule, String username, String pass) {
+//Anuel
+    public void RegistroDoc(String name,String email, String level, String schedule, String pass, String username, int code, String pnumber) {
 
         try {
             s = conexion.createStatement();
 
             int z = s.executeUpdate("INSERT INTO \"Teacher\"(\"name\", \"email\", \"level\", \"schedule\", \"Password\", \"Username\", \"code\", \"pnumber\")"
-                    + "\nVALUES ('" + name + "', '" + code + "', '" + email + "', '" + level + "', '" + schedule + "', '" + username + "', '" + pass + "', '" + pnumber + "')");
+                    + "\nVALUES ('" + name + "', '" + email + "', '" + level + "', '" + schedule + "', '" + pass + "', '" + username + "', '" + code + "', '" + pnumber + "')");
             if (z == 1) {
             } else {
                 JOptionPane.showMessageDialog(null, "Error");

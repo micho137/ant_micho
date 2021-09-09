@@ -44,4 +44,27 @@ public class Usuario {
         }
         return false;
     }
+    
+    public boolean Login2(String username, String password) {
+
+        if (!validador()) {
+            JOptionPane.showMessageDialog(null, "Connection fail");
+        } else {
+
+            try {
+                ps = con.getConexion().prepareStatement("SELECT * FROM \"Teacher\" WHERE \"Username\" ='" + username + "' AND \"Password\" = '" + password + "';");
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "Inicio Valido");
+                        return true;
+                }else {
+                        JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
+                        return false;
+                    }
+            } catch (SQLException ex) {
+                return false;
+            }
+        }
+        return false;
+    }
 }
