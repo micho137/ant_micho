@@ -21,12 +21,12 @@ public class Usuario {
         return con.conexion();
 
     }
-
     public String[] namesStudent(String Username) {
         String vec[] = new String[2];
-        
+
         try {
-            ps = con.getConexion().prepareStatement("SELECT name , \"Username\" FROM \"Student\" WHERE \"Username\" ='" + Username + "';");
+//            ps = con.getConexion().prepareStatement("SELECT name , \"Username\" FROM \"Student\" WHERE \"Username\" = '" + Username + "';");
+            ps = con.getConexion().prepareStatement("SELECT name FROM \"Student\" WHERE \"Username\" = '" + Username + "';");
             rs = ps.executeQuery();
             if (rs.next()) {
                 vec[0] = rs.getString("name");
@@ -36,6 +36,7 @@ public class Usuario {
                 JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
             }
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
         return vec;
     }
@@ -64,7 +65,7 @@ public class Usuario {
         }
         return false;
     }
-    
+
     public boolean Login2(String username, String password) {
 
         if (!validador()) {
@@ -75,12 +76,12 @@ public class Usuario {
                 ps = con.getConexion().prepareStatement("SELECT * FROM \"Teacher\" WHERE \"Username\" ='" + username + "' AND \"Password\" = '" + password + "';");
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Inicio Valido");
-                        return true;
-                }else {
-                        JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
-                        return false;
-                    }
+                    JOptionPane.showMessageDialog(null, "Inicio Valido");
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
+                    return false;
+                }
             } catch (SQLException ex) {
                 return false;
             }
