@@ -116,7 +116,7 @@ public class Ventana1 extends javax.swing.JFrame {
         jButton3.setText("Eliminar Curso");
 
         jButton4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton4.setText("Ver Curso");
+        jButton4.setText("Ver Cursos");
 
         name_label.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         name_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
