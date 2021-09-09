@@ -28,7 +28,7 @@ public class Usuario {
         } else {
 
             try {
-                ps = con.getConexion().prepareStatement("SELECT * FROM \"Student\" WHERE Username ='" + name + "'AND Pass = '" + pass + "'");
+                ps = con.getConexion().prepareStatement("SELECT * FROM \"Student\" WHERE \"Username\" ='" + name + "'AND Pass = '" + pass + "'");
                 
                 rs = ps.executeQuery();
                 System.out.println("hola");
