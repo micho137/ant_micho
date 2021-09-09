@@ -29,6 +29,10 @@ public class Usuario {
 
             try {
                 ps = con.getConexion().prepareStatement("SELECT * FROM \"Student\" WHERE \"Username\" ='" + name + "' AND \"Pass\" = '" + pass + "';");
+<<<<<<< Updated upstream
+=======
+                
+>>>>>>> Stashed changes
                 rs = ps.executeQuery();
                 if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Inicio Valido");
