@@ -19,6 +19,25 @@ public class Usuario {
     public boolean validador() {
 
         return con.conexion();
+
+    }
+
+    public String[] namesStudent(String Username) {
+        String vec[] = new String[2];
+        
+        try {
+            ps = con.getConexion().prepareStatement("SELECT name , \"Username\" FROM \"Student\" WHERE \"Username\" ='" + Username + "';");
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                vec[0] = rs.getString("name");
+                vec[1] = rs.getString("\"Username\"");
+                JOptionPane.showMessageDialog(null, "Inicio Valido");
+            } else {
+                JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
+            }
+        } catch (SQLException ex) {
+        }
+        return vec;
     }
 
     public boolean Login(String name, String pass) {
@@ -29,15 +48,16 @@ public class Usuario {
 
             try {
                 ps = con.getConexion().prepareStatement("SELECT * FROM \"Student\" WHERE \"Username\" ='" + name + "' AND \"Pass\" = '" + pass + "';");
+
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Inicio Valido");
-                        return true;
-                     
-                }else {
-                        JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
-                        return false;
-                    }
+                    JOptionPane.showMessageDialog(null, "Inicio Valido");
+                    return true;
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
+                    return false;
+                }
             } catch (SQLException ex) {
                 return false;
             }
