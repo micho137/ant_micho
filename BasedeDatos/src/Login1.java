@@ -171,7 +171,7 @@ public class Login1 extends javax.swing.JFrame {
         String pass = new String(ArrayC);
         Usuario usu =  new Usuario();
         if(usu.Login(username, pass)){
-            Ventana1 v = new Ventana1();
+            Ventana2 v = new Ventana2();
             v.setVisible(true);
             this.dispose();
         }else{

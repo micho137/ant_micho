@@ -67,7 +67,22 @@ public class Conection {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    public void Registro3(String name, int code, String duration, String modality, int credits) {
+        try {
+            s = conexion.createStatement();
+            int z = s.executeUpdate("INSERT INTO \"Course\"(\"name\", \"code\", \"duration\", \"modality\", \"credits\")"
+                    + "\nVALUES ('" + name + "', '" + code + "', '" + duration + "', '" + modality + "', '" + credits + "')");
+            if (z == 1) {
+            } else {
 
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+            JOptionPane.showMessageDialog(null, "Curso registrado exitosamente");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 
     public void mostrarEstudiantes(DefaultTableModel tab) {
 
