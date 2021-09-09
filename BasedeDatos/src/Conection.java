@@ -10,7 +10,6 @@ public class Conection {
     private ResultSet rs = null;
     private Statement s = null;
 
-
     public Connection getConexion() {
         return conexion;
     }
@@ -34,7 +33,6 @@ public class Conection {
         }
     }
 
-
     public void Registro(String name, int age, String id, String gen, String semester, String username, String pass) {
         try {
             s = conexion.createStatement();
@@ -51,7 +49,8 @@ public class Conection {
         }
     }
 //Anuel
-    public void RegistroDoc(String name,String email, String level, String schedule, String pass, String username, int code, String pnumber) {
+
+    public void RegistroDoc(String name, String email, String level, String schedule, String pass, String username, int code, String pnumber) {
 
         try {
             s = conexion.createStatement();
@@ -67,7 +66,7 @@ public class Conection {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
     public void Registro3(String name, int code, String duration, String modality, int credits) {
         try {
             s = conexion.createStatement();
@@ -84,9 +83,8 @@ public class Conection {
         }
     }
 
-    public void mostrarEstudiantes(DefaultTableModel tab) {
-
-
+    public DefaultTableModel mostrarEstudiantes(DefaultTableModel tab) {
+                
         try {
             s = conexion.createStatement();
             rs = s.executeQuery("SELECT * FROM Student");
@@ -101,7 +99,9 @@ public class Conection {
                 cont++;
             }
         } catch (Exception e) {
+
         }
+        return tab;
     }
 
 }

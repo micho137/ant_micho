@@ -18,8 +18,18 @@ public class Ventana1 extends javax.swing.JFrame {
     /**
      * Creates new form Ventana1
      */
+    private Usuario u;
+
     public Ventana1() {
         initComponents();
+        Escalar_Img(icon);
+    }
+
+    public Ventana1(String Username) {
+        initComponents();
+        u = new Usuario();
+        name_label.setText(u.namesTeacher(Username)[0]);
+        username_label.setText(u.namesTeacher(Username)[1]);
         Escalar_Img(icon);
     }
 
