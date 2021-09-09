@@ -20,10 +20,11 @@ public class Ventana2 extends javax.swing.JFrame {
      */
     private Usuario u;
 
-    public Ventana2(){
+    public Ventana2() {
         initComponents();
+        Escalar_Img(icon);
     }
-    
+
     public Ventana2(String Username) {
         initComponents();
         u = new Usuario();
