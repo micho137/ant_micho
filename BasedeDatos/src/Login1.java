@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -167,7 +170,13 @@ public class Login1 extends javax.swing.JFrame {
         char[] ArrayC = jPasswordField1.getPassword();
         String pass = new String(ArrayC);
         Usuario usu =  new Usuario();
-        usu.Login(username, pass);
+        if(usu.Login(username, pass)){
+            Ventana1 v = new Ventana1();
+            v.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Login invalido");
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
