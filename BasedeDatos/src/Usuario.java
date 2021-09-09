@@ -23,7 +23,32 @@ public class Usuario {
 
     }
 
-    public String[] namesStudent(String Username) {
+    public String[] namesTeacher(String Username) {
+        String vec[] = new String[2];
+
+        JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
+        if (!validador()) {
+            JOptionPane.showMessageDialog(null, "Connection fail");
+        } else {
+            try {
+
+                ps = con.getConexion().prepareStatement("SELECT name FROM \"Teacher\" WHERE \"Username\" = '" + Username + "';");
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    vec[0] = rs.getString("name");
+                    vec[1] = rs.getString("\"Username\"");
+                } else {
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
+        }
+        return vec;
+    }
+
+
+public String[] namesStudent(String Username) {
         String vec[] = new String[2];
 
         try {
